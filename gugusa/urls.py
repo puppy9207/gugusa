@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,re_path,include
 from django.conf import settings
+
 import Project.urls
 import account.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(Project.urls)),
-    path('',include(account.urls))
+    path('api/',include(Project.urls)),
+    path('api/',include(account.urls))
 ]
