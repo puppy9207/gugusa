@@ -18,9 +18,14 @@ from django.urls import path,re_path,include
 from django.conf import settings
 import Project.urls
 import account.urls
+import Portfolio.urls
+import Board.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(Project.urls)),
-    path('',include(account.urls))
+    path('',include(Portfolio.urls)),
+    path('',include(account.urls)),
+    path('',include(Board.urls)),
+    path('api-auth/',include('rest_framework.urls')),
 ]

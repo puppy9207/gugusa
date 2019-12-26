@@ -1,11 +1,11 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from Project import views
+from . import views
 
 router = DefaultRouter()
-router.register('project', views.ProjectViewSet)
+router.register('Board', views.BoardViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path("<int:pk>", views.ProjectDetail.as_view()),
+    path("<int:pk>", views.BoardDetail.as_view()),
 ]

@@ -1,21 +1,27 @@
 from rest_framework import viewsets
-from .models import Project
-from .serializer import ProjectSerializer
+from .models import Board
+from .serializer import BoardSerializer
 from rest_framework import mixins
 from rest_framework import generics
+# from rest_framework.authentication \
+#     import BasicAuthentication, SessionAuthentication
 
-class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
 
-    def perform_create(self,serializer):
+class BoardViewSet(viewsets.ModelViewSet):
+    # authentication_classes = [BasicAuthentication, SessionAuthentication]
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
+
+
+    def perform_create(self, serializer):
         serializer.save(user_id=self.request.user)
 
-class ProjectList(mixins.ListModelMixin,
+
+class BoardList(mixins.ListModelMixin,
                 mixins.CreateModelMixin,
                 generics.GenericAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -23,12 +29,12 @@ class ProjectList(mixins.ListModelMixin,
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class ProjectDetail(mixins.RetrieveModelMixin,
+class BoardDetail(mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.DestroyModelMixin,
                     generics.GenericAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -38,3 +44,4 @@ class ProjectDetail(mixins.RetrieveModelMixin,
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+

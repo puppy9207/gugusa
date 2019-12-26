@@ -1,7 +1,12 @@
 {
 	"folders": [
 		{
+			"name": "gugusa",
 			"path": "."
+		},
+		{
+			"name": "Portfolio",
+			"path": "C:\\Users\\MIN\\Desktop\\Portfolio"
 		}
 	],
 	"settings": {}
