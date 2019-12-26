@@ -1,8 +1,12 @@
 from django.contrib import admin
 from .models import User
+from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
-admin.site.register(User)
+class accountAdmin(UserAdmin):
+    model = User
+
+admin.site.register(User, accountAdmin)
 
 
 # class UserAdmin(admin.ModelAdmin):
