@@ -12,14 +12,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Project',
+            name='Portfolio',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pro_title', models.CharField(max_length=120)),
-                ('pro_content', models.TextField(default='글을 쓰지 않았어요')),
-                ('pro_date', models.DateTimeField(auto_now=True)),
-                ('pro_link', models.CharField(max_length=250, null=True)),
-                ('pro_sub', models.IntegerField(default=0, null=True)),
+                ('port_title', models.CharField(max_length=120)),
+                ('port_content', models.TextField(default='글을 쓰지 않았어요')),
+                ('port_date', models.DateTimeField(auto_now=True)),
             ],
         ),
     ]

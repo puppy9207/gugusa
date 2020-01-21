@@ -1,22 +1,21 @@
 from rest_framework import viewsets
-from .models import Project
-from .serializer import ProjectSerializer
+from .models import Portfolio
+from .serializer import PortfolioSerializer
 from rest_framework import mixins
 from rest_framework import generics
 
-class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+class PortfolioViewSet(viewsets.ModelViewSet):
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
 
     def perform_create(self,serializer):
         serializer.save(user_id=self.request.user)
-        #serializer.save()
 
-class ProjectList(mixins.ListModelMixin,
+class PortfolioList(mixins.ListModelMixin,
                 mixins.CreateModelMixin,
                 generics.GenericAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -24,12 +23,12 @@ class ProjectList(mixins.ListModelMixin,
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class ProjectDetail(mixins.RetrieveModelMixin,
+class PortfolioDetail(mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.DestroyModelMixin,
                     generics.GenericAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)

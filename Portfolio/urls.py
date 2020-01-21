@@ -1,11 +1,11 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from Project import views
+from Portfolio import views
 
 router = DefaultRouter()
-router.register('project', views.ProjectViewSet)
+router.register('Portfolio', views.PortfolioViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path("<int:pk>", views.ProjectDetail.as_view()),
+    path("<int:pk>", views.PortfolioDetail.as_view()),
 ]
